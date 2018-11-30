@@ -1,6 +1,7 @@
 package com.dictation.dictation.dao;
 
 import com.dictation.dictation.domain.Dictation;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
