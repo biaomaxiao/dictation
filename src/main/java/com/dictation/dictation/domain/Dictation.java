@@ -4,6 +4,7 @@ package com.dictation.dictation.domain;
  * @author zwr
  * @date 2018.11.30
  */
+
 public class Dictation {
     private Integer id;
     private String word;//单词
