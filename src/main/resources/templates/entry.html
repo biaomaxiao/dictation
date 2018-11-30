@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <script th:src="@{js/dictation.js}"></script>
     <title>语音录入</title>
 </head>
 <body>
@@ -9,7 +10,7 @@
     <legend>
         <strong>语音录入</strong>
     </legend>
-
+    <input type="button" value="录入单词" onclick="add()">
     <thead>
     <tr>
         <th>ID</th>
@@ -20,15 +21,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="l : ${list}">
-        <td th:text="${l.id}"></td>
-        <td><a th:href="" th:text="${l.word}"></a></td>
+    <tr th:each="l,userStat : ${list}">
+        <td th:text="${l.id}">55</td>
+        <td><a th:text="${l.word}"></a></td>
         <td th:text="${l.creationTime}"></td>
         <td th:text="${l.deletedState}"></td>
         <td>
             <input type="button" value="修改" onclick="edit()">
             <input type="button" value="删除" onclick="del()">
-            <input type="button" value="播放" onclick="play()">
+            <input type="button" value="播放" th:onclick="'javascript:play('+${l.word}+')'">
         </td>
     </tr>
     </tbody>

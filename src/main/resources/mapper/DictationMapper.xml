@@ -10,7 +10,7 @@
     </delete>
 
     <select id="findAll" resultType="com.dictation.dictation.domain.Dictation">
-        select * from t_dictation
+        select id,word,creation_time creationTime,deleted_state deletedState from t_dictation
     </select>
 
     <select id="findByid">
