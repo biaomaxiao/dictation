@@ -5,15 +5,15 @@
         insert into t_dictation values (#{word},#{creationTime},#{deletedState})
     </insert>
 
-    <delete id="deleteWord" parameterType="com.dictation.dictation.domain.Dictation">
+    <delete id="deleteWord">
         delete  from t_dictation where id=#{id}
     </delete>
 
-    <select id="findAll" parameterType="com.dictation.dictation.domain.Dictation">
+    <select id="findAll" resultType="com.dictation.dictation.domain.Dictation">
         select * from t_dictation
     </select>
 
-    <select id="findByid" parameterType="com.dictation.dictation.domain.Dictation">
+    <select id="findByid">
         select * from t_dictation where id=#{id}
     </select>
 </mapper>
