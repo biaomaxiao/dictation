@@ -1,23 +1,21 @@
 package com.dictation.dictation.Controller;
 import com.dictation.dictation.domain.Dictation;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
+import com.dictation.dictation.service.impl.DictationServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.xml.ws.Action;
-import javax.xml.ws.RequestWrapper;
+
 
 /**
  * @author wb
- * 添加数据
+ * DictarionController
  */
-@Controller
+
 public class DictarionController {
-    //@Autowired
+    @Autowired
+    private DictationServiceImpl dictationServiceImpl;
 
-   // @RequestMapping(value="/")
     public String  addwords(Dictation dictation){
-       // Boolean b=  servlet.
-
-        return "";
+        dictationServiceImpl.insertWord(dictation);
+        return "entry";
     };
 }
