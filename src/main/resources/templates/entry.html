@@ -23,13 +23,13 @@
     <tbody>
     <tr th:each="l,userStat : ${list}">
         <td th:text="${l.id}">55</td>
-        <td><a th:text="${l.word}"></a></td>
+        <td><a th:text="${l.word}" th:id="'t_'+${l.id}"></a></td>
         <td th:text="${l.creationTime}"></td>
         <td th:text="${l.deletedState}"></td>
         <td>
             <input type="button" value="修改" onclick="edit()">
             <input type="button" value="删除" onclick="del()">
-            <input type="button" value="播放" th:onclick="'javascript:play('+${l.word}+')'">
+            <input type="button" value="播放" th:onclick="|play(${l.id})|">
         </td>
     </tr>
     </tbody>

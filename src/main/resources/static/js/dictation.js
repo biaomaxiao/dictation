@@ -6,7 +6,7 @@ function del() {
     
 }
 
-function play(baidu) {
+function play(id) {
     var f=function(i){
         setTimeout(function(){
             v=Things[i];
@@ -15,14 +15,12 @@ function play(baidu) {
             window.speechSynthesis.speak(msg);
         },5000*i);
     };
-
-
-    var a=baidu;
-    Things = a.split('、');
+    //alert("t_"+id);
+    var word=document.getElementById("t_"+id).innerText;
+    Things = word.split('、');
     for (var i = 0; i < Things.length; i++) {
         f(i);
     }
-
 }
 
 function add() {
