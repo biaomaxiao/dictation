@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dictation.dictation.domain.Dictation">
+<mapper namespace="com.dictation.dictation.dao.DictationDao">
     <insert id="insertWord" parameterType="com.dictation.dictation.domain.Dictation">
         insert into t_dictation values (#{word},#{creationTime},#{deletedState})
     </insert>
