@@ -9,22 +9,27 @@
     <legend>
         <strong>语音录入</strong>
     </legend>
-    <input type="button" value="修改" onclick="">
-    <input type="button" value="删除" onclick="">
+
     <thead>
     <tr>
         <th>ID</th>
         <th>单词</th>
         <th>创建时间</th>
         <th>删除状态</th>
+        <th>操作</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="">
-        <th scope="" th:text=""></th>
-        <td><a th:href="" th:text=""></a></td>
-        <td th:text=""></td>
-        <td th:text=""></td>
+    <tr th:each="l : ${list}">
+        <td th:text="${l.id}"></td>
+        <td><a th:href="" th:text="${l.word}"></a></td>
+        <td th:text="${l.creationTime}"></td>
+        <td th:text="${l.deletedState}"></td>
+        <td>
+            <input type="button" value="修改" onclick="edit()">
+            <input type="button" value="删除" onclick="del()">
+            <input type="button" value="播放" onclick="play()">
+        </td>
     </tr>
     </tbody>
 </table>
