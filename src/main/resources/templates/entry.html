@@ -21,17 +21,21 @@
     </thead>
     <tbody>
     <tr th:each="l : ${list}">
-        <td th:text="${l.id}"></td>
+        <!--<td th:text="${l.id}"></td>
         <td><a th:href="" th:text="${l.word}"></a></td>
         <td th:text="${l.creationTime}"></td>
-        <td th:text="${l.deletedState}"></td>
+        <td th:text="${l.deletedState}"></td>-->
         <td>
             <input type="button" value="修改" onclick="edit()">
             <input type="button" value="删除" onclick="del()">
-            <input type="button" value="播放" onclick="play()">
+            <input type="button" value="播放" onclick="'resi('+'${l.word}'+')'">
         </td>
     </tr>
     </tbody>
 </table>
 </body>
+
+
+
+
 </html>
