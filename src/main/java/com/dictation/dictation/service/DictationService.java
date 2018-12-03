@@ -7,7 +7,7 @@ import java.util.List;
 public interface DictationService {
     void insertWord(Dictation dictation);
 
-    void deleteWord(Dictation dictation);
+    void deleteWord(Integer id);
 
     List<Dictation> findAll();
 

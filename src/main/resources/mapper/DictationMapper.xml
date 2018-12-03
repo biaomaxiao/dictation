@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dictation.dictation.dao.DictationDao">
     <insert id="insertWord" parameterType="com.dictation.dictation.domain.Dictation">
-        insert into t_dictation values (#{word},#{creationTime},#{deletedState})
+        insert into t_dictation(word,creation_time,deleted_state) values (#{word},#{creationTime},#{deletedState})
     </insert>
 
     <delete id="deleteWord">
-        delete  from t_dictation where id=#{id}
+        update t_dictation set deleted_state=1 where id=#{id}
     </delete>
 
     <select id="findAll" resultType="com.dictation.dictation.domain.Dictation">
@@ -14,6 +14,6 @@
     </select>
 
     <select id="findByid">
-        select * from t_dictation where id=#{id}
+        select id,word,creation_time creationTime,deleted_state deletedState from t_dictation where id=#{id}
     </select>
 </mapper>

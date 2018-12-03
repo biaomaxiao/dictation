@@ -2,7 +2,6 @@ package com.dictation.dictation.dao;
 
 import com.dictation.dictation.domain.Dictation;
 import org.apache.ibatis.annotations.Mapper;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public interface DictationDao {
     /**
      * 删除单词
      */
-    void  deleteWord(Dictation dictation);
+    void  deleteWord(Integer id);
 
     /**
      * 查询所有单词

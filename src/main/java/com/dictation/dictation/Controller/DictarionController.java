@@ -4,7 +4,7 @@ import com.dictation.dictation.service.impl.DictationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -29,10 +29,41 @@ public class DictarionController {
         return mv;
     }
 
-    //添加
+    //添加单词
     @RequestMapping("/addWords")
+    @ResponseBody
     public String  addWords(Dictation dictation){
-        dictationServiceImpl.insertWord(dictation);
-        return "entry";
-    };
+        try {
+            dictationServiceImpl.insertWord(dictation);
+            return "true";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "false";
+        }
+    }
+
+    //删除
+    @RequestMapping("/delWords")
+    @ResponseBody
+    public String delWords(Integer id){
+        try {
+            dictationServiceImpl.deleteWord(id);
+            return "true";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "false";
+        }
+    }
+
+/*    //修改
+    @RequestMapping("/updateWords")
+    public @ResponseBody String updateWrods(Dictation dictation){
+        try {
+
+            return "success";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "failure";
+        }
+    }*/
 }
