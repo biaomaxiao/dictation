@@ -82,8 +82,8 @@
                 a = arr.split(',');
                 for (var i = 0; i < a.length; i++) {
                     $(this).val("");
-                    $("#samp2").append('<input type="text" id=i><br>');
-                    var pdid= i;
+                    $("#samp2").append('<input type="text" id="showdataid\'+i+\'"><br>');
+                    var pdid= "showdataid"+i;
                     $("#" + pdid + "").val(a[i]);
                     alert(pdid)
 
