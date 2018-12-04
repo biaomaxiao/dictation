@@ -13,7 +13,10 @@
         select id,word,creation_time creationTime,deleted_state deletedState from t_dictation
     </select>
 
-    <select id="findByid">
-        select id,word,creation_time creationTime,deleted_state deletedState from t_dictation where id=#{id}
+    <select id="findByid" resultType="com.dictation.dictation.domain.Dictation">
+        select * from t_dictation where id=#{id}
     </select>
+    <update id="updataid" parameterType="com.dictation.dictation.domain.Dictation">
+        UPDATE t_dictation SET word = #{word},deleted_state = #{deletedState} WHERE id = #{id}
+    </update>
 </mapper>

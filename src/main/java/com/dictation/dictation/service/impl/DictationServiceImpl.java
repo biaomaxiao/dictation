@@ -16,7 +16,7 @@ public class DictationServiceImpl implements DictationService {
     private DictationDao dictationDao;
     @Override
     public void insertWord(Dictation dictation) {
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         dictation.setCreationTime(sdf.format(new Date()));
         dictation.setDeletedState(0);
         dictationDao.insertWord(dictation);
@@ -33,7 +33,16 @@ public class DictationServiceImpl implements DictationService {
     }
 
     @Override
-    public List<Dictation> findByid(Integer id) {
+    public Dictation findByid(Integer id) {
         return dictationDao.findByid(id);
+    }
+
+    public void updataid(Dictation dictation) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        dictation.setCreationTime(sdf.format(new Date()));
+        dictation.setDeletedState(0);
+        dictationDao.updataid(dictation);
+
+
     }
 }

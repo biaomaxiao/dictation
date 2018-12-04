@@ -4,6 +4,9 @@ import com.dictation.dictation.domain.Dictation;
 
 import java.util.List;
 
+/**
+ *
+ */
 public interface DictationService {
     void insertWord(Dictation dictation);
 
@@ -11,5 +14,7 @@ public interface DictationService {
 
     List<Dictation> findAll();
 
-    List<Dictation>  findByid(Integer id);
+    Dictation  findByid(Integer id);
+
+    void updataid(Dictation dictation);
 }

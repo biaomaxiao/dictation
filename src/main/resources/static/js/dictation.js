@@ -23,6 +23,7 @@ function edit() {
 
 //播放
 function play(id) {
+
     var state=document.getElementById("del_"+id).innerText;
     if(state=="已删除"){
         layer.msg("已删除，不可播放！");
@@ -38,11 +39,12 @@ function play(id) {
     };
     //alert("t_"+id);
     var word=document.getElementById("t_"+id).innerText;
-    Things = word.split('、');
+    Things = word.split(',');
     for (var i = 0; i < Things.length; i++) {
         f(i);
     }
 }
+
 
 function save() {
     if(confirm("确认提交吗?")){

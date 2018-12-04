@@ -7,9 +7,9 @@ package com.dictation.dictation.domain;
 
 public class Dictation {
     private Integer id;
-    private String word;//单词
-    private String creationTime;//创建时间
-    private Integer deletedState;//删除状态
+    private String word; //单词
+    private String creationTime; //创建时间
+    private Integer deletedState; //删除状态
 
     public Integer getId() {
         return id;

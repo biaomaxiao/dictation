@@ -11,6 +11,7 @@ import java.util.List;
 public interface DictationDao {
     /**
      * 增加单词
+     *
      * @param dictation
      */
     void insertWord(Dictation dictation);
@@ -18,7 +19,7 @@ public interface DictationDao {
     /**
      * 删除单词
      */
-    void  deleteWord(Integer id);
+    void deleteWord(Integer id);
 
     /**
      * 查询所有单词
@@ -28,5 +29,10 @@ public interface DictationDao {
     /**
      * 根据id查询单词
      */
-    List<Dictation>  findByid(Integer id);
+    Dictation findByid(Integer id);
+
+    /**
+     * 根据id修改单词
+     */
+    void updataid(Dictation dictation);
 }
