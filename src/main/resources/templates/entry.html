@@ -5,7 +5,7 @@
     <script th:src="@{js/dictation.js}"></script>
     <script th:src="@{jquery-3.3.1.js}"></script>
     <script th:src="@{layer/layer.js}"></script>
-    <link rel="stylesheet" href="css/dictation.css" type="text/css" />
+    <link rel="stylesheet" href="css/dictation.css" type="text/css"/>
     <title>语音录入</title>
 </head>
 <script>
@@ -17,30 +17,30 @@
             area: ['400px', '350px'], //宽高
             content: $("#add")
         });
-        len=1;
+        len = 1;
         $("#j").click(function () {
             $("#samp1").append('<input type="text" id="word"><br>');
-            len+=1;
+            len += 1;
         });
         //多天记录添加
-        $("#but").click(function(){
+        $("#but").click(function () {
             var $inputArr = $('#add #word');//length = 3
             //循环处理input,并定义结果集
             var result = [];
-            $inputArr.each(function(){
+            $inputArr.each(function () {
                 //将每个input的值放进结果集
                 result.push($(this).val());
             });
             //5.打印结果
             alert(result);
-            arr=result.join(",");
+            arr = result.join(",");
             $.ajax({
                 url: "/addWords",
-                data:{"word":arr},
+                data: {"word": arr},
                 success: function (data) {
-                   if (data=true){
-                       alert("添加成功")
-                   }
+                    if (data = true) {
+                        alert("添加成功")
+                    }
                 }
             })
 
@@ -49,10 +49,10 @@
 
     //删除
     function del(id) {
-        if(confirm("确定要删除吗?")){
+        if (confirm("确定要删除吗?")) {
             $.ajax({
                 url: "delWords",
-                data:{id:id},
+                data: {id: id},
                 success: function (data) {
                     //alert(data);
                     if (data == "true") {
@@ -64,7 +64,8 @@
             })
         }
     }
-//修改提交
+
+    //修改提交
     function edit(id) {
         $("#samp2").empty();
         layer.open({
@@ -75,41 +76,38 @@
         });
         $.ajax({
             url: "/allidWords",
-            data:{id:id},
+            data: {id: id},
             success: function (data) {
-                arr=data['word']
-                a=arr.split(',');
-                 str = "";
-                for(var i=0;i<a.length;i++)
-                {
-
+                arr = data['word']
+                a = arr.split(',');
+                for (var i = 0; i < a.length; i++) {
                     $(this).val("");
-                    $('left #upword').val(a[i]);
-                    if (i>0){
-                        $("#samp2").append('<input type="text" id="word"><br>');
+                    $("#samp2").append('<input type="text" id=i><br>');
+                    var pdid= i;
+                    $("#" + pdid + "").val(a[i]);
+                    alert(pdid)
 
-                    }
                 }
 
             }
         })
 
-        $("#updataword").click(function(){
+        $("#updataword").click(function () {
             var $inputArr = $('#updata #upword');//length = 3
             //循环处理input,并定义结果集
             var result = [];
-            $inputArr.each(function(){
+            $inputArr.each(function () {
                 //将每个input的值放进结果集
                 result.push($(this).val());
             });
             //5.打印结果
             alert(result);
-            arr=result.join(",");
+            arr = result.join(",");
             $.ajax({
                 url: "/updateWords",
-                data:{"word":arr,"id":id},
+                data: {"word": arr, "id": id},
                 success: function (data) {
-                    if (data=true){
+                    if (data = true) {
                         alert("添加成功")
                     }
                 }
@@ -120,19 +118,16 @@
     };
 
 
-    $("#updataword").click(function(){
+    $("#updataword").click(function () {
         $.post(
             "/updateWords",
-            {id:id},
+            {id: id},
             function (data) {
                 alert("成功")
             },
             "json"
         );
     });
-
-
-
 
 
 </script>
@@ -158,8 +153,8 @@
         <td th:text="${l.creationTime}"></td>
         <td th:text="${l.deletedState}==0?'正常':'已删除'" th:id="'del_'+${l.id}"></td>
         <td>
-            <input type="button" class="button" value="修改" th:onclick="|edit(${l.id})|" >
-            <input type="button"  class="button-red" value="删除" th:onclick="|del(${l.id})|">
+            <input type="button" class="button" value="修改" th:onclick="|edit(${l.id})|">
+            <input type="button" class="button-red" value="删除" th:onclick="|del(${l.id})|">
             <input type="button" class="button" value="播放" th:onclick="|play(${l.id})|">
         </td>
     </tr>
@@ -168,15 +163,15 @@
 
 <div id="add" style="display:none;">
     请输入单词：
-    <form >
+    <form>
         <input type="text" id="word"><br/><samp id="samp1"></samp>
         <input type="button" class="button" value="+" id="j">
         <input type="button" class="button" value="提交" id="but">
     </form>
 </div>
-<div id="updata" style="display:none;" >
+<div id="updata" style="display:none;">
     <form>
-        <input type="text" id="upword" value=""><br/><samp id="samp2"></samp>
+        <samp id="samp2"></samp>
         <input type="button" class="button" value="提交" id="updataword">
     </form>
 
