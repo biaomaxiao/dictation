@@ -77,34 +77,51 @@ function add() {
         area: ['400px', '350px'], //宽高
         content: $("#add")
     });
-    len = 1;
+    $("#samp1").append('<input type="text" id="word"><br id="b">');
     $("#j").click(function () {
-        $("#samp1").append('<input type="text" id="word"><br>');
-        len += 1;
+        var  v=$("#samp1 input:last").val();
+       if (v!="") {
+           $("#samp1").append('<input type="text" id="word"><br id="b">');
+       }else {
+           alert("不能为空")
+       }
+
+    });
+    $("#jian").click(function () {
+        $("#samp1 input").remove("#samp1 input:last");
+        $("#samp1 br").remove("#samp1 br:last");
+
     });
     //多天记录添加
     $("#but").click(function () {
-        var $inputArr = $('#add #word');//length = 3
-        //循环处理input,并定义结果集
-        var result = [];
-        $inputArr.each(function () {
-            //将每个input的值放进结果集
-            result.push($(this).val());
-        });
-        //5.打印结果
-        arr = result.join(",");
-        $.ajax({
-            url: "/addWords",
-            data: {"word": arr},
-            success: function (data) {
-                if (data = true) {
-                    alert("添加成功")
-                    parent.window.location.reload();
-                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
-                    parent.layer.close(index);
+        var  v=$("#samp1 input:last").val();
+        if (v!="") {
+
+            var $inputArr = $('#add #word');//length = 3
+            //循环处理input,并定义结果集
+            var result = [];
+            $inputArr.each(function () {
+                //将每个input的值放进结果集
+                result.push($(this).val());
+            });
+            //5.打印结果
+            arr = result.join(",");
+            $.ajax({
+                url: "/addWords",
+                data: {"word": arr},
+                success: function (data) {
+                    if (data = true) {
+                        alert("添加成功")
+                        parent.window.location.reload();
+                        var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                        parent.layer.close(index);
+                    }
                 }
-            }
-        })
+            })
+        }else {
+            alert("不能为空")
+        }
+
 
     });
 }
@@ -177,15 +194,3 @@ function edit(id) {
     });
 
 };
-
-
-$("#updataword").click(function () {
-    $.post(
-        "/updateWords",
-        {id: id},
-        function (data) {
-            alert("成功")
-        },
-        "json"
-    );
-});
