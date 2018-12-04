@@ -29,19 +29,35 @@ function play(id) {
         layer.msg("已删除，不可播放！");
         return;
     }
+
     var f=function(i){
         setTimeout(function(){
             v=Things[i];
             var msg = new SpeechSynthesisUtterance(v);
             console.log(msg);
             window.speechSynthesis.speak(msg);
+           if (i==Things.length-1) {
+                layer.open({
+                    type: 1,
+                    skin: 'layui-layer-rim', //加上边框
+                    area: ['400px', '350px'], //宽高
+                    content: $("#all")
+
+                });
+                var word=document.getElementById("t_"+id).innerText;
+
+                $("#p").html(word)}
+
         },5000*i);
+
     };
     //alert("t_"+id);
-    var word=document.getElementById("t_"+id).innerText;
+   var  word=document.getElementById("t_"+id).innerText;
     Things = word.split(',');
     for (var i = 0; i < Things.length; i++) {
         f(i);
+
+
     }
 }
 
