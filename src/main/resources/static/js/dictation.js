@@ -93,6 +93,7 @@ function add() {
         area: ['400px', '350px'], //宽高
         content: $("#add")
     });
+    $("#samp1").empty();
     $("#samp1").append('<input type="text" id="word"><br id="b">');
     $("#j").click(function () {
         var  v=$("#samp1 input:last").val();
