@@ -175,7 +175,7 @@ function edit(id) {
         data: {id: id},
         success: function (data) {
             arr = data['word']
-            a = arr.split(',');
+           var a = arr.split(',');
             for (var i = 0; i < a.length; i++) {
                 $(this).val("");
                 $("#samp2").append('<input type="text" class="text" id="showdataid'+i+'"><br>');
